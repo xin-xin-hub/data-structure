@@ -2,28 +2,28 @@
 #include<stdlib.h>
 #define ElemType int
 #define MAXSIZE 100
-typedef struct{
-	ElemType *elem;//Ö¸ÏòË³Ğò±íµÄÖ¸Õë 
-	int length;//³¤¶È 
+typedef struct SqList{
+	ElemType *elem;//æŒ‡å‘é¡ºåºè¡¨çš„æŒ‡é’ˆ 
+	int length;//é•¿åº¦ 
 }SqList;
 
-int InitList_Sq (SqList *L){//³õÊ¼»¯Ë³Ğò±í 
+int InitList_Sq (SqList *L){//åˆå§‹åŒ–é¡ºåºè¡¨ 
 	L->elem = malloc(MAXSIZE * sizeof(ElemType));
 	if(!L->elem) return 1;
 	L->length = 0;
 	return 0;
 }
 
-int GetLength (SqList *L){//»ñÈ¡Ë³Ğò±í³¤¶È 
+int GetLength (SqList *L){//è·å–é¡ºåºè¡¨é•¿åº¦ 
 	return L->length;
 } 
 
-int IsEmpty (SqList *L){//ÅĞ¶ÏË³Ğò±íÊÇ·ñÎª¿Õ 
+int IsEmpty (SqList *L){//åˆ¤æ–­é¡ºåºè¡¨æ˜¯å¦ä¸ºç©º 
 	if (L->length == 0) return 1;
 	else return 0;
 } 
 
-int GetElem (SqList *L,int i,ElemType *e){//¸ù¾İÎ»ÖÃ»ñÈ¡Ë³Ğò±íµÄÈ¡Öµ 
+int GetElem (SqList *L,int i,ElemType *e){//æ ¹æ®ä½ç½®è·å–é¡ºåºè¡¨çš„å–å€¼ 
 	if (i < 1 || i > L->length) return 1;
 	*e = L->elem[i - 1];
 	return 0;
@@ -44,7 +44,7 @@ int main() {//test
 	if (GetElem(&L,1,&e) == 0){
 		printf("%d",e);		
 	}else {
-		printf("»ñÈ¡ÔªËØÊ§°Ü£¡Î»ÖÃÎŞĞ§¡£");
+		printf("è·å–å…ƒç´ å¤±è´¥ï¼ä½ç½®æ— æ•ˆã€‚");
 	}
 	
 	free(L.elem);

@@ -9,9 +9,7 @@ typedef struct{
 
 int InitList_Sq (SqList *L){//初始化顺序表 
 	L->elem = malloc(MAXSIZE * sizeof(ElemType));
-	if(L->elem == NULL){
-		return 1;
-	}
+	if(!L->elem) return 1;
 	L->length = 0;
 	return 0;
 }
@@ -21,7 +19,7 @@ int GetLength (SqList *L){//获取顺序表长度
 } 
 
 int IsEmpty (SqList *L){//判断顺序表是否为空 
-	if (L->elem == NULL) return 1;
+	if (L->length == 0) return 1;
 	else return 0;
 } 
 
@@ -35,15 +33,21 @@ int main() {//test
 	SqList L;
 	InitList_Sq(&L);
 	
+	scanf("%d",L.elem);
+	L.length++;
+	
 	int length;
 	length = GetLength(&L);
 	printf("%d\n",length);
 	
 	int e;
-	GetElem(&L,1,&e);
-	printf("%d",e);
+	if (GetElem(&L,1,&e) == 0){
+		printf("%d",e);		
+	}else {
+		printf("获取元素失败！位置无效。");
+	}
 	
-	
+	free(L.elem);
 	
 	return 0;
 } 

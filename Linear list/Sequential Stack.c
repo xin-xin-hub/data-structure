@@ -3,12 +3,12 @@
 #define ElemType int
 #define MAXSIZE 100
 typedef struct SqStack{
-	ElemType *base;//Õ»µ×Ö¸Õë 
-	ElemType *top;//Õ»Í·Ö¸Õë 
-	int stacksize;//Õ»×î´óÈİÁ¿ 
+	ElemType *base;//æ ˆåº•æŒ‡é’ˆ 
+	ElemType *top;//æ ˆå¤´æŒ‡é’ˆ 
+	int stacksize;//æ ˆæœ€å¤§å®¹é‡ 
 }SqStack;
 
-int InitStack (SqStack *S){//³õÊ¼»¯Ë³ĞòÕ» 
+int InitStack (SqStack *S){//åˆå§‹åŒ–é¡ºåºæ ˆ 
 	S->base = malloc(sizeof(ElemType) * MAXSIZE);  
 	if(!S->base) return 1;
 	S->top = S->base;
@@ -16,21 +16,21 @@ int InitStack (SqStack *S){//³õÊ¼»¯Ë³ĞòÕ»
 	return 0;
 }
 
-int StackEmpty (SqStack *S){//ÅĞ¶ÏË³ĞòÕ»ÊÇ·ñÎª¿Õ 
+int StackEmpty (SqStack *S){//åˆ¤æ–­é¡ºåºæ ˆæ˜¯å¦ä¸ºç©º 
 	if(S->base == S->top) return 1;
 	else return 2; 
 } 
 
-int StackLength (SqStack *S){//»ñÈ¡Ë³ĞòÕ»³¤¶È
+int StackLength (SqStack *S){//è·å–é¡ºåºæ ˆé•¿åº¦
 	return S->top - S->base;
 } 
 
-int ClearStack (SqStack *S){//Çå¿ÕË³Ğò±í 
+int ClearStack (SqStack *S){//æ¸…ç©ºé¡ºåºè¡¨ 
 	if(S->base) S->top = S->base; 
 	return 0; 	
 }
 
-int DestroyStack (SqStack *S){//Ïú»ÙË³ĞòÕ» 
+int DestroyStack (SqStack *S){//é”€æ¯é¡ºåºæ ˆ 
 	if(S->base){
 		free(S->base);
 		S->stacksize = 0;
@@ -39,13 +39,13 @@ int DestroyStack (SqStack *S){//Ïú»ÙË³ĞòÕ»
 	return 0; 
 } 
 
-int Push (SqStack *S,ElemType e){
+int Push (SqStack *S,ElemType e){//å…¥æ ˆ
 	if(S->top - S->base == S->stacksize) return 1;
 	*S->top++ = e; 
 	return 0;
 }
 
-int Pop (SqStack *S,ElemType *e){
+int Pop (SqStack *S,ElemType *e){//å‡ºæ ˆ
 	if(S->top == S->base) return 1;
 	*e = *--S->top; 
 	return 0; 

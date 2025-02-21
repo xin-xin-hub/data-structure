@@ -16,7 +16,7 @@ int StackEmpty (LinkStack *S){//判断顺序栈是否为空
 	else return 0; 
 } 
 
-int GetTop (LinkStack *S){
+int GetTop (LinkStack *S){//获取栈顶数据
 	if(*S != NULL) return (*S)->data;
 }
 

@@ -1,18 +1,17 @@
 #include<stdio.h>
 #include<stdlib.h>
 #define ElemType int
-#define MAXSIZE 100
 typedef struct StackNode{
-	ElemType data;//Êý¾ÝÓò 
-	struct StackNode *next;//Ö¸ÕëÓò 
+	ElemType data;//æ•°æ®åŸŸ 
+	struct StackNode *next;//æŒ‡é’ˆåŸŸ 
 }StackNode,*LinkStack;
 
-int InitStack (LinkStack *S){//³õÊ¼»¯Á´Õ» 
+int InitStack (LinkStack *S){//åˆå§‹åŒ–é“¾æ ˆ 
 	*S = NULL; 
 	return 0;
 }
 
-int StackEmpty (LinkStack *S){//ÅÐ¶ÏË³ÐòÕ»ÊÇ·ñÎª¿Õ 
+int StackEmpty (LinkStack *S){//åˆ¤æ–­é¡ºåºæ ˆæ˜¯å¦ä¸ºç©º 
 	if(*S == NULL) return 1;
 	else return 0; 
 } 
@@ -21,7 +20,7 @@ int GetTop (LinkStack *S){
 	if(*S != NULL) return (*S)->data;
 }
 
-int Push (LinkStack *S,ElemType e){//ÈëÕ» 
+int Push (LinkStack *S,ElemType e){//å…¥æ ˆ 
 	LinkStack p = malloc(sizeof(StackNode));
 	if(!p) return 1; 
 	p->data = e; 
@@ -30,7 +29,7 @@ int Push (LinkStack *S,ElemType e){//ÈëÕ»
 	return 0;
 }
 
-int Pop (LinkStack *S,ElemType *e){//³öÕ» 
+int Pop (LinkStack *S,ElemType *e){//å‡ºæ ˆ 
 	if(*S == NULL) return 1;
 	*e = (*S)->data;
 	LinkStack p = *S;

@@ -23,7 +23,7 @@ void Get_Next (SString *T,int next[]){//由模式串T求出next数组
 }
 
 int Index_KMP (SString *S,SString *T,int pos){
-	int next[MAXSIZE];
+	int next[MAXSIZE + 1];
 	Get_Next(T,next);//获取T的next数组 
 	int i = pos;//pos为从S的pos位置开始查找 
 	int j = 1;//SString结构体下标为0处不存储
